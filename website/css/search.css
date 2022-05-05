@@ -1,0 +1,27 @@
+
+html{
+    background: #333;
+}
+body{
+    background: #333;
+}
+
+
+.container, .container-lg, .container-md, .container-sm {
+    max-width: 960px;
+    
+}
+.btn.btn-primary{
+    background: #ee2914e7;
+}
+.card-header{
+    background: #222;
+}
+.logo span {
+    color: #ee2914e7;
+   font-size: 30px;
+}
+label.logo{
+    color: white;
+    font-size: 30px;
+}
