@@ -62,7 +62,40 @@ if(!isset($user_id)){
                             </thead>
                             
                             <tbody>
-                                    <tr>
+                                <?php 
+                                    $con = mysqli_connect("localhost","root","","user_form",);
+
+                                    if(isset($_GET['search']))
+                                    {
+                                        $filtervalues = $_GET['search'];
+                                        $query = "SELECT * FROM company_job_posts WHERE CONCAT(post_name, post_req, post_desc) LIKE '%$filtervalues%' ";
+                                        $query_run = mysqli_query($con, $query);
+
+                                        if(mysqli_num_rows($query_run) > 0)
+                                        {
+                                            foreach($query_run as $items)
+                                            {
+                                                ?>
+                                                <tr>
+                                                    <td><?= $items['company_id']; ?></td>
+                                                    <td><?= $items['post_name']; ?></td>
+                                                    <td><?= $items['post_desc']; ?></td>
+                                                    <td><?= $items['post_req']; ?></td>
+                                                </tr>
+                                                <?php
+                                            }
+                                        }
+                                        else
+                                        {
+                                            ?>
+                                                <tr>
+                                                    <td colspan="4">No Record Found</td>
+                                                </tr>
+                                            <?php
+                                        }
+                                    }
+                                ?>
+                                    <!--<tr>
                                         <td>Ratatat</td>
                                         <td>Manager</td>
                                         <td>Lorem ipsum</td>
@@ -80,7 +113,7 @@ if(!isset($user_id)){
                                         <td>Loreadfad fasdf adfm ipsum</td>
                                         <td>Kikwe4r awdfzsfgag afg aergt argafg afgitiw</td>
                                     </tr>
-                                <!--<tr>
+                                -----------<tr>
                                     <td colspan="4">No Record Found</td>
                                 </tr>-->
                             </tbody>
