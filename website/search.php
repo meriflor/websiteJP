@@ -54,7 +54,7 @@
                                     if(isset($_GET['search']))
                                     {
                                         $filtervalues = $_GET['search'];
-                                        $query = "SELECT * FROM users WHERE CONCAT(name, email, user_type) LIKE '%$filtervalues%' ";
+                                        $query = "SELECT * FROM users WHERE CONCAT(name) LIKE '%$filtervalues%' AND user_type = 'company'";
                                         $query_run = mysqli_query($con, $query);
 
                                         if(mysqli_num_rows($query_run) > 0)
